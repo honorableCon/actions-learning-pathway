@@ -1,0 +1,18 @@
+name: build-test-deploy
+on: push
+jobs:
+  init-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: checkout@v3
+      - run: echo "$(cat hello_world.txt)"
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm run install
+      - run: npm run build
+      
+        
+          
